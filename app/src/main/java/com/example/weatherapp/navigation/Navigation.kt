@@ -11,10 +11,11 @@ import com.example.intraverse.viewModels.AuthViewModel
 import com.example.weatherapp.Screens.HomeScreen
 import com.example.weatherapp.Screens.LoginScreen
 import com.example.weatherapp.Screens.RegistrationScreen
+import com.example.weatherapp.viewModels.WeatherViewModel
 
 
 @Composable
-fun MyAppNavigation(modifier: Modifier = Modifier,authViewModel: AuthViewModel){
+fun MyAppNavigation(modifier: Modifier = Modifier,authViewModel: AuthViewModel, weatherViewModel: WeatherViewModel){
 
 
     val navController = rememberNavController()
@@ -32,9 +33,8 @@ fun MyAppNavigation(modifier: Modifier = Modifier,authViewModel: AuthViewModel){
             RegistrationScreen(modifier,navController,authViewModel)
         }
         composable("home"){
-            HomeScreen(modifier,navController,authViewModel)
+            HomeScreen(modifier,weatherViewModel,authViewModel)
         }
-
 
     }
 }

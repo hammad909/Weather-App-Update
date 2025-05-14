@@ -177,7 +177,7 @@ class AuthViewModel() : ViewModel() {
 
                 val googleIdOption: GetGoogleIdOption = GetGoogleIdOption.Builder()
                     .setFilterByAuthorizedAccounts(false)
-                    .setServerClientId("751443189598-q24r01sklojdcjle8gkbqjouhavtc617.apps.googleusercontent.com")
+                    .setServerClientId("679088799537-ucdfj2ar1qmjetvbgnkhc5g8en798vf8.apps.googleusercontent.com")
                     .setNonce(hashedNonce)
                     .setAutoSelectEnabled(true)
                     .build()
@@ -234,17 +234,8 @@ class AuthViewModel() : ViewModel() {
 
                 Log.d("UserLocation", "Latitude: $latitude, Longitude: $longitude")
 
-                val geocoder = Geocoder(context, Locale.getDefault())
-                val addresses = geocoder.getFromLocation(latitude, longitude, 1)
-
-                if (!addresses.isNullOrEmpty()) {
-                    val address = addresses[0].getAddressLine(0)
-                    Log.d("UserLocation", "Address: $address")
-                    address
-                } else {
-                    Log.d("UserLocation", "Address not found")
-                    null
-                }
+                // Return in "lat,lon" format for WeatherAPI
+                "$latitude,$longitude"
             } else {
                 Log.d("UserLocation", "Location is null")
                 null
@@ -272,7 +263,6 @@ class AuthViewModel() : ViewModel() {
     }
 
 }
-
 
 
 

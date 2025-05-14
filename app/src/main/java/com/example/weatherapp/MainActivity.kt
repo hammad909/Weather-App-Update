@@ -15,6 +15,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.intraverse.navigation.MyAppNavigation
 import com.example.intraverse.viewModels.AuthViewModel
 import com.example.weatherapp.ui.theme.WeatherAppTheme
+import com.example.weatherapp.viewModels.WeatherViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,13 +25,15 @@ class MainActivity : ComponentActivity() {
 
 
         val authViewModel : AuthViewModel by viewModels()
+        val weatherViewModel: WeatherViewModel by viewModel()
 
         setContent {
             WeatherAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     MyAppNavigation(
                         modifier = Modifier.padding(innerPadding),
-                        authViewModel = authViewModel
+                        authViewModel = authViewModel,
+                        weatherViewModel = weatherViewModel
                     )
                 }
             }
