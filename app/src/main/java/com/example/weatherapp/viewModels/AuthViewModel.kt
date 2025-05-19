@@ -38,7 +38,8 @@ import java.util.Locale
 
 class AuthViewModel() : ViewModel() {
 
-    private val user = MutableLiveData<User?>(null)
+    private val user = MutableStateFlow<User?>(null)
+    val _user : StateFlow<User?> = user
 
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
@@ -54,10 +55,21 @@ class AuthViewModel() : ViewModel() {
     }
 
     private fun checkAuthStatus() {
+        val currentUser = auth.currentUser
         _authState.value = _authState.value.copy(
-            isAuthenticated = auth.currentUser != null
+            isAuthenticated = currentUser != null
         )
+
+        if (currentUser != null) {
+            user.value = User(
+                id = currentUser.uid,
+                name = currentUser.displayName ?: "",
+                photoUrl = currentUser.photoUrl?.toString() ?: "",
+                email = currentUser.email ?: ""
+            )
+        }
     }
+
 
     fun login(email: String, password: String) {
 

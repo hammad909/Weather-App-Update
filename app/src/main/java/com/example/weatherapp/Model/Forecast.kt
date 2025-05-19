@@ -3,8 +3,6 @@ package com.example.weatherapp.Model
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Condition(
-    val code: Int,
-    val icon: String,
-    val text: String
+data class Forecast(
+    val forecastday: List<Forecastday>
 )

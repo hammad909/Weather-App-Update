@@ -11,6 +11,7 @@ import com.example.intraverse.viewModels.AuthViewModel
 import com.example.weatherapp.Screens.HomeScreen
 import com.example.weatherapp.Screens.LoginScreen
 import com.example.weatherapp.Screens.RegistrationScreen
+import com.example.weatherapp.Screens.UserinfoScreen
 import com.example.weatherapp.viewModels.WeatherViewModel
 
 
@@ -33,8 +34,13 @@ fun MyAppNavigation(modifier: Modifier = Modifier,authViewModel: AuthViewModel, 
             RegistrationScreen(modifier,navController,authViewModel)
         }
         composable("home"){
-            HomeScreen(modifier,weatherViewModel,authViewModel)
+            HomeScreen(modifier,weatherViewModel,authViewModel,navController)
         }
+
+        composable("userInfo"){
+            UserinfoScreen(navController,authViewModel)
+        }
+
 
     }
 }

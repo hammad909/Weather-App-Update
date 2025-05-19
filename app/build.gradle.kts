@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.google.gms.google.services)
+    id ("kotlinx-serialization")
 }
 
 android {
@@ -71,6 +72,7 @@ dependencies {
     implementation("io.insert-koin:koin-androidx-compose:3.5.3")
 
 
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3") // or latest
 
     implementation("io.ktor:ktor-client-core:2.3.4")
     implementation("io.ktor:ktor-client-android:2.3.1")  // Android specific engine
@@ -88,5 +90,13 @@ dependencies {
     implementation ("com.google.android.gms:play-services-location:21.3.0")
 
     implementation("androidx.navigation:navigation-compose:2.9.0")
+
+    implementation("io.coil-kt:coil-compose:2.4.0")
+
+    implementation("androidx.compose.material:material-icons-extended:1.6.1")
+
+    implementation("io.ktor:ktor-client-logging:2.3.7")
+
+  
 
 }
